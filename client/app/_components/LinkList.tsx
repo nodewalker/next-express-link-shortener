@@ -14,7 +14,9 @@ export const Link = ({ details }: { details: LinkDetails }) => {
       <div
         className="font-medium text-[18px] cursor-pointer"
         onClick={() =>
-          navigator.clipboard.writeText(`http://localhost:3000/${details.id}`)
+          navigator.clipboard.writeText(
+            `https://shortener.smirnov-portfolio.ru/${details.id}`
+          )
         }
       >
         {details.id}

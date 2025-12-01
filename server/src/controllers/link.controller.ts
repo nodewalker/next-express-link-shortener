@@ -16,7 +16,7 @@ class D {
   }
 
   async getLongLinkByShort(req: Request, res: Response) {
-    if (Number.isInteger(req.params.shortLink)) {
+    if (!Number.isNaN(+req.params.shortLink)) {
       const r = await LinkService.getLongLinkByShort(
         parseInt(req.params.shortLink)
       );
