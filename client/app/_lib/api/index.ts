@@ -1,6 +1,6 @@
 export const fetchApi = async (url: string, init?: RequestInit) => {
   return (
-    await fetch(`http://localhost:5000${url}`, {
+    await fetch(`http://localhost:5050/api${url}`, {
       ...init,
       headers: { "Content-Type": "application/json", ...init?.headers },
     })

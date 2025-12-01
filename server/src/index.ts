@@ -21,7 +21,7 @@ const main = async () => {
   app.use(Express.json());
 
   app.use(cors({}));
-  app.use(Routes);
+  app.use("/api", Routes);
 
   app.listen(port, "0.0.0.0", () => console.log(`Server start on: ${port}`));
 };
