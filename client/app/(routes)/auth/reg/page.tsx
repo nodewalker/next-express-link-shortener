@@ -4,14 +4,16 @@ import { Button, Input } from "@/app/_components";
 import { UserContext } from "@/app/_lib/providers/UserProvider";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const Reg = () => {
   const [error, setError] = useState<string | null>(null);
   const { user, handleUserReg } = useContext(UserContext);
   const router = useRouter();
 
-  if (user.id) router.push("/");
+  useEffect(() => {
+    if (user.id) router.push("/");
+  }, [user, router]);
 
   return (
     <div className="max-w-[500px] w-full mx-auto py-10 px-2.5 flex flex-col gap-4">

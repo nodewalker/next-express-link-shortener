@@ -1,7 +1,8 @@
+import { verify } from "./../utils/helper";
 import * as JWT from "jsonwebtoken";
 import { Config } from "../utils/config";
 import { UserService } from "./user.service";
-import { CreateUserDetails } from "src/utils/types";
+import { CreateUserDetails } from "../utils/types";
 
 class D {
   async reg(details: CreateUserDetails) {
@@ -24,14 +25,14 @@ class D {
 
   async login(details: { username: string; password: string }) {
     const user = await UserService.findUser({ username: details.username });
-    if (!user)
+    if (!user || !user.password)
       return {
         data: null,
         msg: "error",
         error: "Username not found",
         status: 404,
       };
-    if (user.password !== details.password)
+    if (!(await verify(details.password, user.password)))
       return {
         data: null,
         msg: "error",

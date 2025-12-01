@@ -82,11 +82,11 @@ export const UserProvider = ({ children }: { children?: React.ReactNode }) => {
 
   useEffect(() => {
     const openApp = async () => {
+      setLoading(true);
       const user = await fetchApiWithAuth("/user/profile", { method: "GET" });
       if (user.msg === "success") {
         setUser({ id: user.data.id, username: user.data.username });
       }
-      setLoading(true);
     };
 
     openApp();

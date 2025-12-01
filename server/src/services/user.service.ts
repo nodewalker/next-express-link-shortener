@@ -1,3 +1,4 @@
+import { hash } from "../utils/helper";
 import { UserModel } from "../models";
 import { CreateUserDetails } from "../utils/types";
 
@@ -14,7 +15,7 @@ class D {
 
     const user = new UserModel();
     user.username = details.username;
-    user.password = details.password;
+    user.password = await hash(details.password);
     const r = await user.save();
     return { data: r, msg: "success", status: 200 };
   }
