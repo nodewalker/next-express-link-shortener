@@ -15,6 +15,18 @@ class D {
     return res.status(r.status).json(r);
   }
 
+  async getLongLinkByShort(req: Request, res: Response) {
+    if (Number.isInteger(req.params.shortLink)) {
+      const r = await LinkService.getLongLinkByShort(
+        parseInt(req.params.shortLink)
+      );
+      return res.status(r.status).json(r);
+    }
+    return res
+      .status(400)
+      .json({ data: null, msg: "error", error: "Invalid param", status: 400 });
+  }
+
   async remove(req: Request, res: Response) {
     const r = await LinkService.remove(req["user"]!.id, req.body.linkId);
     return res.status(r.status).json(r);

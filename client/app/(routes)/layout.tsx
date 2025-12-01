@@ -1,3 +1,4 @@
+import { LinkProvider } from "../_lib/providers/LinkProvider";
 import { UserProvider } from "../_lib/providers/UserProvider";
 
 export default function RoutesLayout({
@@ -5,5 +6,9 @@ export default function RoutesLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <UserProvider>{children}</UserProvider>;
+  return (
+    <UserProvider>
+      <LinkProvider>{children}</LinkProvider>
+    </UserProvider>
+  );
 }

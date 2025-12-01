@@ -90,11 +90,15 @@ class D {
   }
 
   validate(token: string) {
-    const payload = JWT.verify(
-      token,
-      Config.server.jwtsecret
-    ) as JWT.JwtPayload;
-    return payload;
+    try {
+      const payload = JWT.verify(
+        token,
+        Config.server.jwtsecret
+      ) as JWT.JwtPayload;
+      return payload;
+    } catch (error) {
+      return null;
+    }
   }
 }
 

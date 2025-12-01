@@ -13,6 +13,7 @@ router.post(
   LinkController.create
 );
 router.get("/", AuthGuard, LinkController.getAll);
+router.get("/:shortLink", LinkController.getLongLinkByShort);
 router.delete(
   "/",
   validate([body("linkId").notEmpty()]),

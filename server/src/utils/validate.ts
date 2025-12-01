@@ -8,6 +8,7 @@ export const validate = (validations: ContextRunner[]) => {
     next: express.NextFunction
   ) => {
     const errors: any[] = [];
+    console.log(req.body);
     for (const validation of validations) {
       const result = await validation.run(req);
       if (!result.isEmpty()) {

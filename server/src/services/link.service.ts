@@ -28,6 +28,13 @@ class D {
     return { data: links, msg: "success", status: 200 };
   }
 
+  async getLongLinkByShort(shortLink: number) {
+    const link = await LinkModel.findOne({ where: { id: shortLink } });
+    if (!link)
+      return { data: null, msg: "error", error: "Link not found", status: 404 };
+    return { data: link, msg: "success", status: 200 };
+  }
+
   async remove(userId: string, linkId: number) {
     const user = await UserService.findUser({ id: userId });
     if (!user)

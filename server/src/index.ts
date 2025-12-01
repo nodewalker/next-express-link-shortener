@@ -3,6 +3,7 @@ import * as Express from "express";
 import { Config } from "./utils/config";
 import Routes from "./routes";
 import { AppDataSource } from "./models";
+import * as cors from "cors";
 
 const port = Config.server.port;
 
@@ -19,6 +20,7 @@ const main = async () => {
   app.use(Express.urlencoded({ extended: false }));
   app.use(Express.json());
 
+  app.use(cors({}));
   app.use(Routes);
 
   app.listen(port, "0.0.0.0", () => console.log(`Server start on: ${port}`));

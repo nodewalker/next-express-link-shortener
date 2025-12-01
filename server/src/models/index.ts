@@ -1,4 +1,4 @@
-import { Config } from "src/utils/config";
+import { Config } from "../utils/config";
 import { LinkModel } from "./link";
 import { UserModel } from "./user";
 import { DataSource } from "typeorm";
